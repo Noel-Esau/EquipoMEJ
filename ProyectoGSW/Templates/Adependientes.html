@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/68a46699b1.js" crossorigin="anonymous"></script>
+    {% load static %}
+    <title>Registro Dependientes</title>
+</head>
+
+<body>
+    <h1 align=center><b>Dependiente</b></h1>
+<!--INICIO DE MENU-->
+<header>
+    <nav class="navegacion">
+        <!--menu-->
+        <ul class="menu">
+            <!--Inicio-->
+            <li>
+                <a href="/Inicio">
+                    <i class="fas fa-home"></i>
+                    Inicio
+                </a>
+            </li>
+            <!--Empleados-->
+            <li>
+                <a href="#">
+                    <i class="fas fa-users"></i>
+                    Empleados
+                    <ul class="menu_emp">
+                        <li>
+                            <a href="/Empleados">
+                                <i class="fas fa-user-plus"></i>
+                                Nuevo Empleado
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/ConsultaEmp">
+                                <i class="fas fa-eye"></i>
+                                Ver Empleados
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/Supervisor">
+                                <i class="fas fa-user-plus"></i>
+                                Nuevo Supervisor
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/ConsultaSuper">
+                                <i class="fas fa-eye"></i>
+                                Ver Supervisores
+                            </a>
+                        </li>
+                    </ul>
+                </a>
+            </li>
+            <!--Departamentos-->
+            <li>
+                <a href="#">
+                    <i class="fas fa-building"></i>
+                    Departamentos
+                    <!--Submenu Departamentos-->
+                    <ul class="menu_dep">
+                        <li>
+                            <a href="/AgregarDep">
+                                <i class="fas fa-city"></i>
+                                Agregar Departamento
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/ConsultaDepto">
+                                <i class="fas fa-eye"></i>
+                                Ver Departamentos
+                            </a>
+                        </li>
+                    </ul>
+                </a>
+            </li>
+            <!--Dependientes-->
+            <li>
+                <a href="#">
+                    <i class="fas fa-user"></i>
+                    Dependientes
+                    <!--Submenu Dependientes-->
+                    <ul class="menu_deptes">
+                        <li>
+                            <a href="/ADepen">
+                                <i class="fas fa-user-plus"></i>
+                                Agregar Nuevo Dependiente
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/ConsultaDeptes">
+                                <i class="fas fa-eye"></i>
+                                Ver Dependientes
+                            </a>
+                        </li>
+                    </ul>
+                </a>
+            </li>
+            <!--Proyectos-->
+            <li>
+                <a href="#">
+                    <i class="fas fa-file-alt"></i> 
+                    Proyectos
+                    <!--Submenu Proyectos-->
+                    <ul class="menu_pro">
+                        <li>
+                            <a href="/APro">
+                                <i class="fas fa-file-medical"></i>
+                                Agregar Proyecto
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/ConsultaPro">
+                                <i class="fas fa-eye"></i>
+                                Ver Proyectos
+                            </a>
+                        </li>
+                    </ul>
+                </a>
+            </li>
+            <!--Reportes-->
+            <li>
+                <a href="/reportes">
+                    <i class="fas fa-copy"></i>
+                    Reportes Empleado
+                </a>
+            </li>
+            <!--Boton Salir-->
+            <li>
+                <a href="/login">
+                    <i class="fas fa-sign-out-alt"></i>
+                    Salir
+                </a>
+            </li>
+        </ul>
+
+    </nav>
+</header>
+
+<!--Registro Dependientes-->
+<section>
+    {% block content %}
+        <form action="/ADepen/" method="POST">
+            {% csrf_token %}
+            {{ formD }}
+            <br><input type="submit" value="Guardar">
+        </form>
+    {% endblock %}
+</section>
+
+<!--Estilo CSS-->
+<style type="text/css">
+    *{
+        margin: 0;
+        padding: 0;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+    h1{
+        color: #0B173B;
+    }
+    .navegacion{
+        text-align: center;
+        width: 1200px;
+        margin: 30px auto;
+        background: #0B173B;
+    }
+    .navegacion ul{
+        list-style: none;
+    }
+    .menu > li{
+        position: relative;
+        display: inline-block;
+    }
+    .menu > li > a{
+        display: block;
+        padding: 15px 20px;
+        color: white;
+        font-family: Arial, Helvetica, sans-serif;
+        text-decoration: none;
+    }
+    .menu li a:hover{
+        color: #FFFF00;
+        transition: all .3s;
+    }
+    .menu_emp{
+        position: absolute;
+        background: #5858FA;
+        width: 130%;
+        visibility: hidden;
+        opacity: 0;
+        transition: opacity 0.7s;
+    }
+    .menu_emp li a{
+        text-align: left;
+        display: block;
+        padding: 10px;
+        color: white;
+        font-family: Arial, Helvetica, sans-serif;
+        text-decoration: none;
+    }
+    .menu li:hover .menu_emp{
+        visibility: visible;
+        opacity: 1;
+    }
+    /*Diseño tabla registro dependientes*/
+    form{
+        border:  3px solid #0B173B;
+	    padding: 1rem;
+	    margin: 30px auto;
+	    max-width: 20%;
+        text-align: center;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    form label{
+        margin: 1rem;
+        min-width: 80%;
+    }
+    form input, form select{
+        border:  1px solid #0B173B;
+	    padding: 0.3rem;
+	    margin: 1rem;
+	    width: 90%;		
+    }
+    form ul li{
+        visibility: hidden;
+    }
+    /* Diseño Submenu Empleados*/
+    .menu_emp{
+        position: absolute;
+        background: #5858FA;
+        width: 130%;
+        visibility: hidden;
+        opacity: 0;
+        transition: opacity 0.7s;
+    }
+    .menu_emp li a{
+        text-align: left;
+        display: block;
+        padding: 10px;
+        color: white;
+        font-family: Arial, Helvetica, sans-serif;
+        text-decoration: none;
+    }
+    .menu li:hover .menu_emp{
+        visibility: visible;
+        opacity: 1;
+    }
+
+    /* Diseño Submenu Departamentos*/
+    .menu_dep{
+        position: absolute;
+        background: #5858FA;
+        width: 130%;
+        visibility: hidden;
+        opacity: 0;
+        transition: opacity 0.7s;
+    }
+    .menu_dep li a{
+        text-align: left;
+        display: block;
+        padding: 10px;
+        color: white;
+        font-family: Arial, Helvetica, sans-serif;
+        text-decoration: none;
+    }
+    .menu li:hover .menu_dep{
+        visibility: visible;
+        opacity: 1;
+    }
+
+    /* Diseño Submenu Dependientes*/
+    .menu_deptes{
+        position: absolute;
+        background: #5858FA;
+        width: 130%;
+        visibility: hidden;
+        opacity: 0;
+        transition: opacity 0.7s;
+    }
+    .menu_deptes li a{
+        text-align: left;
+        display: block;
+        padding: 10px;
+        color: white;
+        font-family: Arial, Helvetica, sans-serif;
+        text-decoration: none;
+    }
+    .menu li:hover .menu_deptes{
+        visibility: visible;
+        opacity: 1;
+    }
+
+    /* Diseño Submenu Proyectos*/
+    .menu_pro{
+        position: absolute;
+        background: #5858FA;
+        width: 130%;
+        visibility: hidden;
+        opacity: 0;
+        transition: opacity 0.7s;
+    }
+    .menu_pro li a{
+        text-align: left;
+        display: block;
+        padding: 10px;
+        color: white;
+        font-family: Arial, Helvetica, sans-serif;
+        text-decoration: none;
+    }
+    .menu li:hover .menu_pro{
+        visibility: visible;
+        opacity: 1;
+    }
+
+
+</style>
+</body>
+</html>

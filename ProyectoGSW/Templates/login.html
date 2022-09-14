@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <script src="https://kit.fontawesome.com/32cd57a669.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <form action="" method="GET" class="formulario">
+        <h1>Iniciar Sesion</h1>
+        <div class="contenedor">
+
+            <div class="input-contenedor">
+
+                <i class="fas fa-user icon"></i>
+                <input name="usuario" type="text" placeholder="Nombre de Usuario" required>
+
+            </div>
+
+            <div class="input-contenedor">
+
+                <i class="fas fa-key icon"></i>
+                <input name="password" type="password" placeholder="Contraseña" required>
+
+            </div>
+
+            <!--Mensaje de error-->
+            {% if error %}
+                <h3 align="center">Usuario y/o Contraseña incorrectos</h3>
+            {% endif %}
+            
+            <!--Boton y mensaje inferior-->
+            <input type="submit" value="Iniciar Sesion" class="button">
+            <p>¿No tienes una cuenta?<a class="link" href="/registrar">Registrate</a></p>
+
+        </div>
+    </form>
+    <!--Estilo CSS-->
+    <style type="text/css">
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0%;
+            background-color: #1a2537;
+        }
+        * {
+            box-sizing: border-box;
+        }
+        .contenedor{
+            width: 100%;
+            padding: 15px;
+        }
+        .formulario{
+            background: white;
+            margin-top: 150px;
+            padding: 3px;
+        }
+        h1{
+            text-align: center;
+            color: #1a2537;
+            font-size: 40px;
+        }
+        input[type="text"],
+        input[type="password"]{
+            font-size: 20px;
+            width: 82%;
+            padding: 10px;
+            border: none;
+        }
+        .input-contenedor{
+            margin-bottom: 15px;
+            border: 1px solid #aaa;
+        }
+        .icon{
+            min-width: 50px;
+            text-align: center;
+            color: #999;
+        }
+        .button{
+            border: none;
+            width: 100%;
+            color: white;
+            font-size: 20px;
+            background: #1a2537;
+            padding: 15px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .button:hover{
+            background: cadetblue;
+        }
+        p{
+            text-align: center;
+        }
+        .link{
+            text-decoration: none;
+            color: #1a2537;
+            font-weight: 600;
+        }
+        .link:hover{
+            color: cadetblue;
+        }
+        @media(min-width:768px){
+            .formulario{
+                margin: auto;
+                width: 500px;
+                margin-top: 150px;
+                border-radius: 7%;
+            }
+        }
+    </style>
+</body>
+</html>
